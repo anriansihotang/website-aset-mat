@@ -50,7 +50,70 @@
   </div>
 </nav>
 	</header>
+	<main>
+	<div class="row" >
+          <div class="offset-sm-2 col-sm-8">
+            <canvas id="mychart" width="100px" height="45px"></canvas>
+            </div>
+        </div>
+	</main>
     <h1>user</h1>
+	<?php
+ $koneksi = mysqli_connect("localhost","root","","dataasetmat");
+ require_once './controller/datachart.php';
+?>
+	<!-- scriptchart -->
+	<script>
+var ctx = document.getElementById("mychart");
+
+var datas = {
+  labels: ['Kendaraan','Furnitur','Elektronik'],
+  datasets: [{
+    label: 'Data A',
+    data: [<?php
+              $query = "SELECT SUM(jumlah) as totalkb FROM crudkendaraan";
+              $halamanUtama->diagramKB($query);
+          ?>,
+          <?php
+          $query = "SELECT SUM(jumlah) as totalfurnitur FROM crudfurnitur";
+          $halamanUtama->diagramfurnitur($query);
+      ?>,
+      <?php
+      $query = "SELECT SUM(jumlah) as totalelektronik FROM crudelektronik";
+      $halamanUtama->diagramelektronik($query);
+  ?>],
+    backgroundColor: [
+      "#FF6384",
+      "#4BC0C0",
+      "#FFCE56",
+      "#E7E9ED",
+      "#36A2EB"
+    ],
+  }, ]
+};
+
+var options = {
+  responsive: true,
+  hover: {
+    mode: 'label',
+  },
+  tooltips: {
+    enabled: true,
+    callbacks: {
+      
+    }
+
+  }
+};
+
+
+var chr = new Chart(ctx, {
+  data: datas,
+  type: 'pie',
+  options: options,
+});
+
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
   </body>
 </html>
