@@ -1,9 +1,6 @@
 <?php
-
-require_once 'koneksi.php';
-
-//class  
-class Elektronik {
+	require_once 'koneksi.php';
+	class Elektronik {
     protected $db;
 
     public function __construct($koneksi){
@@ -41,26 +38,29 @@ class Elektronik {
         {
             ?>
 
-            <tr>
-            <td><?php echo "{$row['no_brg']}"; ?></td>
-            <td><?php echo "{$row['model']}"; ?></td>
-            <td><?php echo "{$row['merk']}"; ?></td>
-            <td><?php echo "{$row['status']}"; ?></td>
-            <td><?php echo "{$row['tgl_input']}"; ?></td>
-            <td><?php echo "{$row['th_beli']}"; ?></td>
-            <td><?php echo "{$row['jumlah']}"; ?></td>
-            <td><?php echo "{$row['stn_hrg']}"; ?></td>
-            <td><?php echo "{$row['ttl_hrg']}"; ?></td>
-            <td>
-                <a href="controller/class_hapus.php?id_elektronik='<?php echo $row['id'] ?>'" onclick='return confirm("apakah anda ingin menghapus?");' class='btn btn-danger'><span class='bi bi-trash'></span></a>
-            </td>
-            <td> 
-                <a href="editelektronik.php?id=<?php echo $row['id'] ?>" class='btn btn-primary'><span class='bi bi-pen'></span></a>
-            </td>
+<tr>
+	<td><?php echo "{$row['no_brg']}"; ?></td>
+	<td><?php echo "{$row['model']}"; ?></td>
+	<td><?php echo "{$row['merk']}"; ?></td>
+	<td><?php echo "{$row['status']}"; ?></td>
+	<td><?php echo "{$row['tgl_input']}"; ?></td>
+	<td><?php echo "{$row['th_beli']}"; ?></td>
+	<td><?php echo "{$row['jumlah']}"; ?></td>
+	<td><?php echo "{$row['stn_hrg']}"; ?></td>
+	<td><?php echo "{$row['ttl_hrg']}"; ?></td>
+	<td>
+		<a href="controller/hapus.php?id_elektronik='<?php echo $row['id'] ?>'"
+			onclick='return confirm("apakah anda ingin menghapus?");' class='btn btn-danger'><span
+				class='bi bi-trash'></span></a>
+	</td>
+	<td>
+		<a href="editelektronik.php?id=<?php echo $row['id'] ?>" class='btn btn-primary'><span
+				class='bi bi-pen'></span></a>
+	</td>
 
-            </tr>
+</tr>
 
-            <?php
+<?php
             
         }
     }
@@ -72,18 +72,18 @@ class Elektronik {
         while($row = $query->fetch(PDO::FETCH_ASSOC))
         {
             ?>
-                <tr>
-                <td><?php echo "{$row['no_brg']}"; ?></td>
-                <td><?php echo "{$row['model']}"; ?></td>
-                <td><?php echo "{$row['merk']}"; ?></td>
-                <td><?php echo "{$row['status']}"; ?></td>
-                <td><?php echo "{$row['tgl_input']}"; ?></td>
-                <td><?php echo "{$row['th_beli']}"; ?></td>
-                <td><?php echo "{$row['jumlah']}"; ?></td>
-                <td><?php echo "{$row['stn_hrg']}"; ?></td>
-                <td><?php echo "{$row['ttl_hrg']}"; ?></td>
-                </tr>
-            <?php
+<tr>
+	<td><?php echo "{$row['no_brg']}"; ?></td>
+	<td><?php echo "{$row['model']}"; ?></td>
+	<td><?php echo "{$row['merk']}"; ?></td>
+	<td><?php echo "{$row['status']}"; ?></td>
+	<td><?php echo "{$row['tgl_input']}"; ?></td>
+	<td><?php echo "{$row['th_beli']}"; ?></td>
+	<td><?php echo "{$row['jumlah']}"; ?></td>
+	<td><?php echo "{$row['stn_hrg']}"; ?></td>
+	<td><?php echo "{$row['ttl_hrg']}"; ?></td>
+</tr>
+<?php
         }
     }
 
@@ -97,7 +97,6 @@ class Elektronik {
                 'no_brg'=>$no_brg,
                 'model'=>$model,
                 'merk'=>$merk,
-                
                 'status'=>$status,
                 'tgl_input'=>$tgl,
                 'th_beli'=>$th_beli,
